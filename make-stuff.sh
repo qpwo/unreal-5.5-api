@@ -40,5 +40,18 @@ for x in $(find . -type f \( -name "*.h" -o -name "*.hpp" \) -printf "%h\n" | so
     echo x is $x
     cp-path $x ~/tmp/ue5-public-headers
 done
+
+
 cd ~/tmp/ue5-public-headers
 rm -vf $(fd -e cpp -e json . ~/tmp/ue5-public-headers)
+rm -rvf $(fd IOS)
+rm -rvf $(fd Android)
+rm -rvf $(fd '^Windows$')
+rm -rvf $(fd 'TVOS')
+rm -rvf $(fd '^Mac$')
+rm -rvf $(fd '^LinuxArm64$')
+rm -rvf $(fd 'Private')
+rm -rvf $(fd 'ThirdParty')
+rm -rvf $(fd 'Internal')
+# Remove empty directories
+find . -type d -empty -delete
